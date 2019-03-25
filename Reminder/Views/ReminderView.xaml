@@ -1,11 +1,13 @@
-﻿<UserControl x:Class="Reminder.Views.MainView"
+﻿<UserControl x:Class="Reminder.Views.ReminderView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:Caliburn="http://www.caliburnproject.org"
              xmlns:ViewModels="clr-namespace:Reminder.ViewModels"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             d:DataContext="{d:DesignInstance ViewModels:MainViewModel}"
+             d:DataContext="{d:DesignInstance ViewModels:ReminderViewModel}"
              mc:Ignorable="d">
-    <ItemsControl x:Name="Reminders"/>
+    <StackPanel>
+        <TextBlock Text="{Binding Reminder.Task}"/>
+        <TextBlock Text="{Binding Reminder.RepeatPeriod, StringFormat={}{0:c}}"/>
+    </StackPanel>
 </UserControl>
