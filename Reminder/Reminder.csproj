@@ -82,6 +82,8 @@
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="Models\Reminder.cs" />
+    <Compile Include="Services\Interfaces\ITimerService.cs" />
+    <Compile Include="Services\TimerService.cs" />
     <Compile Include="ViewModels\ReminderViewModel.cs" />
     <Compile Include="ViewModels\Interfaces\IReminderViewModel.cs" />
     <Compile Include="Views\ReminderView.xaml.cs">
@@ -167,7 +169,6 @@
     <Folder Include="Factories\Interfaces\" />
     <Folder Include="Helpers\" />
     <Folder Include="Images\" />
-    <Folder Include="Services\Interfaces\" />
     <Folder Include="Utilities\Interfaces\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

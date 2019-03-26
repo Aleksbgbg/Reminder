@@ -2,6 +2,8 @@
 {
     using Caliburn.Micro.Wrapper;
 
+    using Reminder.Services;
+    using Reminder.Services.Interfaces;
     using Reminder.ViewModels;
     using Reminder.ViewModels.Interfaces;
 
@@ -13,6 +15,11 @@
             Container.Singleton<IMainViewModel, MainViewModel>();
 
             viewModelFactory.Register<IReminderViewModel, ReminderViewModel>();
+        }
+
+        protected override void RegisterServices()
+        {
+            Container.Singleton<ITimerService, TimerService>();
         }
     }
 }
