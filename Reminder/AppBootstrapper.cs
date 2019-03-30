@@ -19,6 +19,8 @@
 
         protected override void RegisterServices()
         {
+            Container.Singleton<IElapsedTimeService, ElapsedTimeService>();
+            Container.Singleton<ITimeProvider, TimeProvider>();
             Container.Singleton<ITimerService, TimerService>();
         }
     }

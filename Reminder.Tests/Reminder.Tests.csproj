@@ -72,7 +72,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\CardViewModelTests.cs" />
+    <Compile Include="Services\ElapsedTimeServiceTests.cs" />
+    <Compile Include="ViewModels\ReminderViewModelTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

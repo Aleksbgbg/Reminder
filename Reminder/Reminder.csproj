@@ -82,7 +82,11 @@
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="Models\Reminder.cs" />
+    <Compile Include="Services\ElapsedTimeService.cs" />
+    <Compile Include="Services\Interfaces\IElapsedTimeService.cs" />
+    <Compile Include="Services\Interfaces\ITimeProvider.cs" />
     <Compile Include="Services\Interfaces\ITimerService.cs" />
+    <Compile Include="Services\TimeProvider.cs" />
     <Compile Include="Services\TimerService.cs" />
     <Compile Include="ViewModels\ReminderViewModel.cs" />
     <Compile Include="ViewModels\Interfaces\IReminderViewModel.cs" />
@@ -166,7 +170,6 @@
     <Folder Include="Converters\" />
     <Folder Include="EventArgs\" />
     <Folder Include="Extensions\" />
-    <Folder Include="Factories\Interfaces\" />
     <Folder Include="Helpers\" />
     <Folder Include="Images\" />
     <Folder Include="Utilities\Interfaces\" />

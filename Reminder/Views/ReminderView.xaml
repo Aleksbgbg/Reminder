@@ -9,5 +9,6 @@
     <StackPanel>
         <TextBlock Text="{Binding Reminder.Task}"/>
         <TextBlock Text="{Binding Reminder.RepeatPeriod, StringFormat={}{0:c}}"/>
+        <TextBlock Text="{Binding RemainingTime, StringFormat={}{0:c}}"/>
     </StackPanel>
 </UserControl>

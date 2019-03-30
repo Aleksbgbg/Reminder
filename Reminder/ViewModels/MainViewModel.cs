@@ -11,7 +11,7 @@
     {
         public MainViewModel(IViewModelFactory viewModelFactory)
         {
-            Reminders = new IReminderViewModel[] { viewModelFactory.MakeViewModel<IReminderViewModel>(new Reminder("Todo", TimeSpan.FromDays(3))) };
+            Reminders = new IReminderViewModel[] { viewModelFactory.MakeViewModel<IReminderViewModel>(new Reminder("Todo", DateTime.Today, TimeSpan.FromDays(3))) };
         }
 
         public IReminderViewModel[] Reminders { get; }
