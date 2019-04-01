@@ -16,15 +16,15 @@
         public void TestUpdatesRemainingReminderDuration()
         {
             // Arrange
-            Mock<ITimerService> timerMock = new Mock<ITimerService>();
-            Mock<IElapsedTimeService> elapsedTimeServiceMock = new Mock<IElapsedTimeService>();
-
             TimeSpan reminderDuration = TimeSpan.FromMilliseconds(5000);
             TimeSpan elapsedTime = TimeSpan.FromMilliseconds(1500);
             TimeSpan newReminderDuration = reminderDuration - elapsedTime;
 
             Reminder reminder = new Reminder(string.Empty, DateTime.Today, reminderDuration);
 
+            Mock<ITimerService> timerMock = new Mock<ITimerService>();
+
+            Mock<IElapsedTimeService> elapsedTimeServiceMock = new Mock<IElapsedTimeService>();
             elapsedTimeServiceMock.Setup(elapsedTimeService => elapsedTimeService.TimeLeftToFulfillReminder(reminder))
                                   .Returns(newReminderDuration);
 
