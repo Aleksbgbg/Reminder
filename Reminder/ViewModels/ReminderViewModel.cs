@@ -8,14 +8,17 @@
 
     internal class ReminderViewModel : ViewModelBase, IReminderViewModel
     {
+        private readonly ITimerService _timerService;
+
         private readonly IElapsedTimeService _elapsedTimeService;
 
         public ReminderViewModel(ITimerService timerService, IElapsedTimeService elapsedTimeService, Reminder reminder)
         {
+            _timerService = timerService;
             _elapsedTimeService = elapsedTimeService;
             Reminder = reminder;
 
-            timerService.SecondElapsed += OnSecondElapsed;
+            SubscribeTimerSecondElapsed();
         }
 
         public Reminder Reminder { get; }
@@ -34,9 +37,37 @@
             }
         }
 
-        private void OnSecondElapsed(object sender, EventArgs e)
+        private void OnTimerSecondElapsed(object sender, EventArgs e)
+        {
+            if (_elapsedTimeService.IsExpired(Reminder))
+            {
+                ExpireReminder();
+            }
+            else
+            {
+                CalculateRemainingTime();
+            }
+        }
+
+        private void ExpireReminder()
+        {
+            Reminder.Expired = true;
+            UnsubscribeTimerSecondElapsed();
+        }
+
+        private void CalculateRemainingTime()
         {
             RemainingTime = _elapsedTimeService.TimeLeftToFulfillReminder(Reminder);
+        }
+
+        private void SubscribeTimerSecondElapsed()
+        {
+            _timerService.SecondElapsed += OnTimerSecondElapsed;
+        }
+
+        private void UnsubscribeTimerSecondElapsed()
+        {
+            _timerService.SecondElapsed -= OnTimerSecondElapsed;
         }
     }
 }

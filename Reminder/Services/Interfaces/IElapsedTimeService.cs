@@ -6,6 +6,8 @@
 
     public interface IElapsedTimeService
     {
+        bool IsExpired(Reminder reminder);
+
         TimeSpan TimeLeftToFulfillReminder(Reminder reminder);
     }
 }

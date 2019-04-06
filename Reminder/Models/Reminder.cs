@@ -2,7 +2,9 @@
 {
     using System;
 
-    public class Reminder
+    using Caliburn.Micro;
+
+    public class Reminder : PropertyChangedBase
     {
         public Reminder(string task, DateTime started, TimeSpan repeatPeriod)
         {
@@ -19,5 +21,19 @@
         public TimeSpan RepeatPeriod { get; }
 
         public DateTime End { get; }
+
+        private bool _expired;
+        public bool Expired
+        {
+            get => _expired;
+
+            set
+            {
+                if (_expired == value) return;
+
+                _expired = value;
+                NotifyOfPropertyChange(nameof(Expired));
+            }
+        }
     }
 }

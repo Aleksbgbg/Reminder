@@ -36,5 +36,26 @@
             // Assert
             Assert.Equal(expectedRemainingTime, actualRemainingTime);
         }
+
+        [Fact]
+        public void TestDeterminesReminderExpiryCorrectly()
+        {
+            // Arrange
+            DateTime timeNow = new DateTime(2020, 6, 15, 12, 37, 48);
+
+            Reminder reminder = new Reminder(string.Empty, timeNow, TimeSpan.Zero);
+
+            Mock<ITimeProvider> timeProviderMock = new Mock<ITimeProvider>();
+            timeProviderMock.SetupGet(timeProvider => timeProvider.CurrentTime)
+                            .Returns(timeNow + TimeSpan.FromMilliseconds(1.0));
+
+            ElapsedTimeService elapsedTimeService = new ElapsedTimeService(timeProviderMock.Object);
+
+            // Act
+            bool isReminderExpired = elapsedTimeService.IsExpired(reminder);
+
+            // Assert
+            Assert.True(isReminderExpired);
+        }
     }
 }

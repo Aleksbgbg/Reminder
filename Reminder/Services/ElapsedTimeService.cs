@@ -14,9 +14,14 @@
             _timeProvider = timeProvider;
         }
 
+        public bool IsExpired(Reminder reminder)
+        {
+            return reminder.End < _timeProvider.CurrentTime;
+        }
+
         public TimeSpan TimeLeftToFulfillReminder(Reminder reminder)
         {
-            return (reminder.Started + reminder.RepeatPeriod) - _timeProvider.CurrentTime;
+            return reminder.End - _timeProvider.CurrentTime;
         }
     }
 }

@@ -36,5 +36,26 @@
             // Assert
             Assert.Equal(newReminderDuration, reminderViewModel.RemainingTime);
         }
+
+        [Fact]
+        public void TestExpiresReminderOnEnded()
+        {
+            // Arrange
+            Reminder reminder = new Reminder(string.Empty, DateTime.Today, TimeSpan.Zero);
+
+            Mock<ITimerService> timerMock = new Mock<ITimerService>();
+
+            Mock<IElapsedTimeService> elapsedTimeServiceMock = new Mock<IElapsedTimeService>();
+            elapsedTimeServiceMock.Setup(elapsedTimeService => elapsedTimeService.IsExpired(reminder))
+                                  .Returns(true);
+
+            ReminderViewModel reminderViewModel = new ReminderViewModel(timerMock.Object, elapsedTimeServiceMock.Object, reminder);
+
+            // Act
+            timerMock.Raise(timerService => timerService.SecondElapsed += null, EventArgs.Empty);
+
+            // Assert
+            Assert.True(reminder.Expired);
+        }
     }
 }
