@@ -71,6 +71,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\Constants.cs" />
     <Compile Include="Api\Create.cs" />
     <Compile Include="Models\ReminderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

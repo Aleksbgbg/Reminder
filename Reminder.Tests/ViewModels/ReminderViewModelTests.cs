@@ -6,6 +6,7 @@
 
     using Reminder.Models;
     using Reminder.Services.Interfaces;
+    using Reminder.Tests.Api;
     using Reminder.ViewModels;
 
     using Xunit;
@@ -20,7 +21,7 @@
             TimeSpan elapsedTime = TimeSpan.FromMilliseconds(1500);
             TimeSpan newReminderDuration = reminderDuration - elapsedTime;
 
-            Reminder reminder = new Reminder(string.Empty, DateTime.Today, reminderDuration);
+            Reminder reminder = Create.Reminder(reminderDuration);
 
             Mock<ITimerService> timerMock = new Mock<ITimerService>();
 
@@ -41,7 +42,7 @@
         public void TestExpiresReminderOnEnded()
         {
             // Arrange
-            Reminder reminder = new Reminder(string.Empty, DateTime.Today, TimeSpan.Zero);
+            Reminder reminder = Create.Reminder();
 
             Mock<ITimerService> timerMock = new Mock<ITimerService>();
 

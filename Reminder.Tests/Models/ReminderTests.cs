@@ -13,8 +13,8 @@
         public void TestEndsAtCorrectTime()
         {
             // Arrange
-            DateTime start = new DateTime(2020, 6, 15);
-            TimeSpan duration = TimeSpan.FromDays(3);
+            DateTime start = Constants.DefaultStartDate;
+            TimeSpan duration = Constants.DefaultDuration;
 
             // Act
             Reminder reminder = Create.Reminder(start, duration);

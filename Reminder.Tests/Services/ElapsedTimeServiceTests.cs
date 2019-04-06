@@ -7,6 +7,7 @@
     using Reminder.Models;
     using Reminder.Services;
     using Reminder.Services.Interfaces;
+    using Reminder.Tests.Api;
 
     using Xunit;
 
@@ -16,7 +17,7 @@
         public void TestComputesReminderFulfillTimeCorrectly()
         {
             // Arrange
-            DateTime timeNow = new DateTime(2020, 6, 15, 12, 37, 48);
+            DateTime timeNow = Constants.DefaultStartDate;
 
             Mock<ITimeProvider> timeProviderMock = new Mock<ITimeProvider>();
             timeProviderMock.SetupGet(timeProvider => timeProvider.CurrentTime)
@@ -26,7 +27,7 @@
             TimeSpan repeatPeriod = TimeSpan.FromDays(5);
             TimeSpan expectedRemainingTime = (startDate + repeatPeriod) - timeNow;
 
-            Reminder reminder = new Reminder(string.Empty, startDate, repeatPeriod);
+            Reminder reminder = Create.Reminder(startDate, repeatPeriod);
 
             ElapsedTimeService elapsedTimeService = new ElapsedTimeService(timeProviderMock.Object);
 
@@ -41,9 +42,9 @@
         public void TestDeterminesReminderExpiryCorrectly()
         {
             // Arrange
-            DateTime timeNow = new DateTime(2020, 6, 15, 12, 37, 48);
+            DateTime timeNow = Constants.DefaultStartDate;
 
-            Reminder reminder = new Reminder(string.Empty, timeNow, TimeSpan.Zero);
+            Reminder reminder = Create.Reminder(timeNow, TimeSpan.Zero);
 
             Mock<ITimeProvider> timeProviderMock = new Mock<ITimeProvider>();
             timeProviderMock.SetupGet(timeProvider => timeProvider.CurrentTime)
