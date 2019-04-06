@@ -6,19 +6,19 @@
 
     public class Reminder : PropertyChangedBase
     {
-        public Reminder(string task, DateTime started, TimeSpan repeatPeriod)
+        public Reminder(string task, DateTime start, TimeSpan duration)
         {
             Task = task;
-            Started = started;
-            RepeatPeriod = repeatPeriod;
-            End = started + repeatPeriod;
+            Start = start;
+            Duration = duration;
+            End = start + duration;
         }
 
         public string Task { get; }
 
-        public DateTime Started { get; }
+        public DateTime Start { get; }
 
-        public TimeSpan RepeatPeriod { get; }
+        public TimeSpan Duration { get; }
 
         public DateTime End { get; }
 

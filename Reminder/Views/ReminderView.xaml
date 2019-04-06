@@ -17,8 +17,8 @@
                    Text="{Binding Reminder.Task, Mode=OneTime}"/>
 
         <StackPanel Grid.Column="1">
-            <TextBlock Text="{Binding Reminder.Started, Mode=OneTime, StringFormat=Started on {0:D} ({0:t})}"/>
-            <TextBlock Text="{Binding Reminder.RepeatPeriod, StringFormat=Repeat every {0:%d} days\, {0:%h} hours\, {0:%m} minutes}"/>
+            <TextBlock Text="{Binding Reminder.Start, Mode=OneTime, StringFormat=Started on {0:D} ({0:t})}"/>
+            <TextBlock Text="{Binding Reminder.Duration, StringFormat=Repeat every {0:%d} days\, {0:%h} hours\, {0:%m} minutes}"/>
             <TextBlock Text="{Binding Reminder.End, StringFormat=Complete by {0:D} ({0:t})}"/>
             <TextBlock Text="{Binding RemainingTime, StringFormat=You\'ve got {0:%d} days\, {0:%h} hours\, {0:%m} minutes\, {0:%s} seconds remaining}"/>
         </StackPanel>
