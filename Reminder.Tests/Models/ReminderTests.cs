@@ -3,6 +3,7 @@
     using System;
 
     using Reminder.Models;
+    using Reminder.Tests.Api;
 
     using Xunit;
 
@@ -16,7 +17,7 @@
             TimeSpan duration = TimeSpan.FromDays(3);
 
             // Act
-            Reminder reminder = new Reminder(string.Empty, start, duration);
+            Reminder reminder = Create.Reminder(start, duration);
 
             // Assert
             Assert.Equal(start + duration, reminder.End);
